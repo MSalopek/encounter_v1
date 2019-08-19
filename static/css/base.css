@@ -1,0 +1,354 @@
+
+  body {
+    font-family: Arial;
+    margin: 0px;
+  }
+
+  /* Header/logo Title */
+  .heading {
+    padding: 2px;
+    margin: 0px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    text-shadow: 1px 1px 1px black
+  }
+  
+  /* Column container */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .outer-container {
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px 1px 0px 1px;
+    background: #f1f1f1; 
+    border-radius: 5px;
+  }
+
+  /* initially side and main are next to eachother */
+  .side {
+    flex: 10%;
+    background-color: #f1f1f1;
+  }
+  
+  /* Main column */
+  .main { 
+    flex: 60%;
+    background-color: white;
+    padding: 20px 20px 20px 50px;
+    height: 100vh;
+  }
+
+  
+  /* add player form */
+ .p-form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  input[type=text], input[type=number], select {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #ddd;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background: #1abc9c;
+    color: white;
+  }
+  
+  .flex-container-out {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    margin-top: 2px;
+  }
+
+  .flex-container-in {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 70%;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0px 2px 2px 2px;
+    color:#202020;
+    text-shadow: 0px 1px 0px #484848;
+  }
+
+  .flex-container-in-clicked {
+    background-color: #1abc9c;
+    color: white;
+    border-width: 1px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 70%;
+  }
+
+  .flex-container-in-inactive {
+    background-color:	#708090;
+    color: white;
+    border-width: 1px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 70%;
+  }
+
+  .flex-container-in .p-stat {
+    flex: 10%;
+    margin: 0;
+    padding-top: 5px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .flex-btn-container {
+    border-left: 1px solid #ccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: inherit;
+    background: inherit;
+  } 
+
+  .remove-btn {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 12px 10px 10px 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+  }
+
+  .flex-container-in .player-name-p {
+    flex: 40%;
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    word-wrap: normal;
+    border-right: 1px solid #ccc;
+  }
+
+  .fa-shield-alt, .fa-plus, .fa-fire, .fa-gavel{
+    stroke: black;
+    stroke-width: 10px;
+  }
+
+  .fa-shield-alt {
+    color: 	#87CEFA;
+  }
+
+  .fa-plus {
+    color: #FF6347;
+  } 
+
+  .fa-fire {
+    color: #FF8C00;
+  }
+
+  .fa-gavel {
+    color: #B22222;
+  }
+
+  .placeholder-p {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 20px;
+    font-size: 16px;
+  }
+  /* Responsive layout - make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    .row, .side {   
+      flex-direction: column;
+    }
+    
+    .main { 
+      flex: 60%;
+      background-color: white;
+      padding: 15px 15px 15px 15px;
+      height: 100vh;
+    }
+          
+    .flex-container-in .p-stat {
+      flex: 10%;
+      margin: 0;
+      padding-top: 10px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .row, .side {   
+      flex-direction: column;
+    }
+
+    .main { 
+      flex: 60%;
+      background-color: white;
+      padding: 10px 10px 10px 10px;
+      height: 100vh;
+    }
+
+      
+    .flex-container-in .p-stat {
+      flex: 10%;
+      margin: 0;
+      padding-top: 10px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .flex-container-in:hover {
+      background-color: #1abc9c;
+      color: white;
+      border-width: 1px;
+      border-radius: 5x;
+      text-shadow: 1px 1px 1px black;
+    }
+    .flex-container-out {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 5px;
+      margin-top: 2px;
+    }
+  
+    .flex-container-in {
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      flex: 70%;
+      border-radius: 5px;
+      padding: 0;
+      margin: 0px 2px 2px 2px;
+      color:#202020;
+      text-shadow: 0px 1px 0px #484848;
+    }
+  
+    .flex-container-in-clicked {
+      background-color: #1abc9c;
+      color: white;
+      border-width: 1px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      flex: 70%;
+    }
+  
+    .flex-container-in-inactive {
+      background-color:	#708090;
+      color: white;
+      border-width: 1px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      flex: 70%;
+    }
+  
+    .flex-container-in .p-stat {
+      flex: 10%;
+      margin: 0;
+      padding-top: 10px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  
+    .flex-btn-container {
+      border-left: 1px solid #ccc;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: inherit;
+      background: inherit;
+    } 
+  
+    .remove-btn {
+      padding: 0;
+      border: none;
+      font: inherit;
+      color: inherit;
+      background-color: transparent;
+      cursor: pointer;
+      margin: 12px 10px 10px 10px;
+      text-align: center;
+      line-height: 50px;
+      font-size: 22px;
+    }
+  
+    .flex-container-in .player-name-p {
+      flex: 40%;
+      margin: 0;
+      padding-top: 10px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 30px;
+      word-wrap: normal;
+      border-right: 1px solid #ccc;
+    }
+  
+    .fa-shield-alt, .fa-plus, .fa-fire, .fa-gavel {
+      stroke: black;
+      stroke-width: 10px;
+    }
+  
+    .fa-shield-alt {
+      color: 	#87CEFA;
+    }
+  
+    .fa-plus {
+      color: #FF6347;
+    } 
+  
+    .fa-fire {
+      color: #FF8C00;
+    }
+  
+    .fa-gavel {
+      color: #B22222;
+    }
+  
+    .placeholder-p {
+      text-align:center;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 20px;
+      font-size:22px;
+    }
+  }

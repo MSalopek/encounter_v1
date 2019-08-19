@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/css/all.css" type="text/css">
+  <link rel="stylesheet" href="static/css/base.css" type="text/css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/all.js"></script>
+  <script src="js/encounter.js"></script>
+  <!-- makes sortable work on mobile -->
+  <script>  
+      $(function() { $("sortable").sortable(); $("#sortable").disableSelection(); });
+  </script>
+  <title>Encounter</title>
+</head>
+<body>
+<!-- Header -->
+<div class="heading">
+  <h2>Encounter</h2>
+</div>
+
+<div class="row">
+  <div class="main">
+    <h2>Encounter Players</h2>
+    <div class="outer-container">
+    <div class="flex-container-out" id="activePlayers">
+        <div class="flex-container-in" id="Placeholder">
+            <p class="placeholder-p">Add Players Using the Form</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side">
+        <h2 style="text-align: center; padding-bottom: 5px; margin-bottom: 0px;">Add Player</h2>
+        <div class="p-form">
+        <form id="playerForm" action="javascript:;" onsubmit="insertPlayer();">
+            <label for="name"><span>Name</label>
+            <input type="text" id="pname" name="name" placeholder="Player name">
+            <label for="ac">Armor Class</label>
+            <input type="text" id="ac" name="armor" placeholder="Player AC">
+            <label for="hp">Hit Points</label>
+            <input type="text" id="hp" name="health" placeholder="Max HP">
+            <label for="hit">To Hit</label>
+            <input type="text" id="hit" name="hit" placeholder="To Hit Bounus">
+            <label for="copies">Create</label>
+            <input type="number" id="copies" min="1" max="30" value="1" placeholder="Create # copies">
+            <input type="submit" id="activeSubmit" value="Add">
+          </form>
+        </div>
+      </div>
+</div>
+</body>
+<script>
+  $(".flex-container-in").parent().sortable({});
+  $(".flex-container-in").parent().disableSelection();
+  
+  $("#activePlayers").on("click", ".remove-btn", function() {
+    $(this).closest("#playerInfo").toggleClass("flex-container-in-inactive");
+  });
+    
+  $("#activePlayers").on("click", ".player-name-p", function() {
+    $(this).closest("#playerInfo").toggleClass("flex-container-in-clicked");
+  }); 
+
+  function insertPlayer() {
+    let playerForm = document.getElementById("playerForm").elements;
+    let isValid = validateForm(playerForm);
+    if (!isValid) {
+        alert("Invalid form data")
+        document.forms["playerForm"].reset();
+        return
+    }
+    let target = document.getElementById("activePlayers");
+    if (target.childNodes[1].id === "Placeholder") {
+        target.childNodes[1].remove()
+    }
+    let flex_div = document.createElement('div');
+    flex_div.setAttribute("class", "flex-container-in");
+    flex_div.setAttribute("id", "playerInfo");
+    
+    appendName(playerForm, flex_div);
+    appendStats(playerForm, flex_div); 
+    appendRemoveButton(flex_div);
+    
+
+    target.appendChild(flex_div);
+    // check if user wants copies
+    if (playerForm[4].value > 1) {
+        replicatePlayer(flex_div, target, parseInt(playerForm[4].value))
+    }
+    $(".flex-container-in").parent().sortable({});
+    $(".flex-container-in").parent().disableSelection();
+    document.forms["playerForm"].reset();
+  }
+</script>
+</html>
